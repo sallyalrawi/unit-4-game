@@ -26,7 +26,7 @@ function startGame() {
    total = 0;
 
    computerPick = computerChoice[Math.floor(Math.random()  * 150)];
-   console.log(computerPick);
+   console.log(total);
 }
 
 
