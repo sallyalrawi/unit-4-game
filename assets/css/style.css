@@ -11,44 +11,45 @@ h1 {
 body {
   background-color:whitesmoke;
 }
-.container {
+.card {
   width: 30%;
   background-color: white;
   color:orange;
   text-align: center;
   padding: 10px;
-  float:right;
+
 }
 #number-to-guess {
   background-color:orange;
-  width: 11%;
+  width: 30%;
   margin: 5px;
   padding: 20px;
   color:white;
   overflow: fixed;
 }
-.container3 {
+.container {
   background-color:orange;
-  width: 10%;
+  width: 30%;
   margin: 5px;
   padding: 10px;
   color:white;
 }
-#crystals {
+#crystals-img {
   display: inline-block;
   padding: 2px;
-  width: 10%;
+  width: 20%;
+  
 }
-.container4 {
+.container1 {
   background-color:orange;
-  width: 11%;
+  width: 30%;
   margin: 5px;
   padding: 5px;
   color:white;
 }
-.container5 {
+.total-number {
   background-color:orange;
-  width: 10%;
+  width: 30%;
   margin: 5px;
   padding: 70px;
   color: white;

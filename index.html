@@ -25,95 +25,46 @@
     <br />
 
     <!-- The body content -->
-    <div class="container">
-      <p>
-        You will be given a random number at the start of the game There are
-        four crystals below , by clicking on a crystal , you will add a spesific
-        amounts of points to your total score. You win the game by matching your
-        total score to random number You lose the game if your total score goes
-        above the random number. The value of each crystal is hidden from you
-        until you click on it. Each time when the game start , the game will
-        change the values of each crystal.
-      </p>
+    <div class="card">
+      <div class="Ins">
+        How to play
+      </div>
+      <div class="card-body">
+        <p class="card-text">You will be given a random number at the start of the game There are
+          four crystals below , by clicking on a crystal , you will add a spesific
+          amounts of points to your total score. You win the game by matching your
+          total score to random number You lose the game if your total score goes
+          above the random number. The value of each crystal is hidden from you
+          until you click on it. Each time when the game start , the game will
+          change the values of each crystal.</p>
+       </div>
+
+   
     </div>
     <!-- The random number -->
     <div class id="number-to-guess"></div>
 
     <!-- Wins and losses counters -->
-    <div class="container3">
+    <div class="container">
       <p id="wins-text">wins:</p>
       <p id="losses-text">losses:</p>
     </div>
 
     <!-- Images -->
     <div id="crystal-img">
-      <img class="crystal-blue" src="assets/images/blue.png" alt="blue" />
+      <img class="crystal crystal-blue" src="assets/images/blue.png" alt="blue" data-crystalvalue=""/>
 
-      <img class="crystal-green" src="assets/images/green.png" alt="green" />
+      <img class="crystal crystal-green" src="assets/images/green.png" alt="green" data-crystalvalue=""/>
 
-      <img class="crystal-red" src="assets/images/red.png" alt="red" />
+      <img class="crystal crystal-red" src="assets/images/red.png" alt="red" />
 
-      <img class="crystal-yellow" src="assets/images/yellow.png" alt="yellow" />
+      <img class="crystal crystal-yellow" src="assets/images/yellow.png" alt="yellow" data-crystalvalue="" />
     </div>
     <!-- The total section -->
-    <div class="container4"><p>Your total is :</p></div>
+    <div class="container1"><p>Your total is :</p></div>
 
-    <div class="container5"><p id="total-number"></p></div>
+    <div class ="total-number"></div>
 
-    <script type="text/javascript" src="assets/javascript/game.js">
-      // Array of crystals
-      // ========================================================
-      var crystals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
-
-  
-      // variables
-      // ===================================================================================================
-      var computerPick;
-      // This will break the solution into individual numbers to be stored in array.
-      var crystalsChosen ;
-      // This will be the number of total we show after clicking on crystals
-      var total ;
-      // Game counters
-      var wins = 0;
-      var losses = 0;
-     
-
-      // starting the game
-      $(document).ready(function() {
-
-      function startGame() {
-
-         total = 0;
-       
-         computerPick = computerChoice[Math.floor(Math.random() * 120)];
-
-         $("#number-to-guess").text(computerPick);
-
-         console.log(computerPick);
-      }
-
-
-       $("#crystal-img").on("click", function() {
-
-              for (var i = 0; i < crystals.length; i++) {
-                  var crystalValue = ($(this).attr("data-crystalvalue"));
-                      crystalValue = parseInt(crystalValue);
-                      total+=crystalValue;
-
-              if (total===computerPick){
-                  wins++;
-                  console.log("New score: " + computerPick + "total:" + total );
-                  startGame();
-              }
-              else if (total >= computerPick) {
-                  losses++;
-                  console.log("New score: " + computerPick + "total:" + total );
-                  startGame();
-                }
-
-              }
-          });
-      });
-    </script>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
   </body>
 </html>
