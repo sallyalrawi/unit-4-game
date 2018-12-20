@@ -3,65 +3,24 @@
   <head>
     <meta charset="utf-8" />
     <title>Game</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <style>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-    h1 {
-    margin: 5px;
-    padding: 10px;
-    font-weight: bold;
-    width: 22%;
-    background-color: orange;
-    color: white;
-  }
-  body {
-    background-color: #4aaaa5;
-  }
-  .container {
-    width: 30%;
-    background-color: white;
-    color: green;
-    text-align: center;
-    padding: 10px;
-  }
-  .container2{
-    background-color: #3355;
-    width: 20%;
-    margin: 5px;
-    padding: 20px;
-    color:black;
-  }
-  .container3 {
-    background-color: #448855;
-    width: 10%;
-    margin: 5px;
-    padding: 10px;
-    color:black;
-  }
-  .container4{
-    background-color: #3355;
-    width: 20%;
-    margin: 5px;
-    padding: 5px;
-    color:black;
-  }
-  .container5{
-    background-color: #3355;
-    width: 10%;
-    margin: 5px;
-    padding: 70px;
-    color:white;
-  }
-    </style>
+
+    <!-- Bootstrap link -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- Jquery link -->
     <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-      crossorigin="anonymous" ></script>
-     
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+    ></script>
+    <!-- css link -->
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css/style.css" >
+    </style>
+    <!-- javascript link -->
   </head>
+
   <body>
     <!-- The heading -->
-
     <h1>Crystals Collector!</h1>
     <br />
 
@@ -77,46 +36,84 @@
         change the values of each crystal.
       </p>
     </div>
-    
-    <div class="container2">
-      <p id="random-number"></p>
-    </div>
+    <!-- The random number -->
+    <div class id="number-to-guess"></div>
 
+    <!-- Wins and losses counters -->
     <div class="container3">
       <p id="wins-text">wins:</p>
       <p id="losses-text">losses:</p>
     </div>
 
-     <div id="crystals">
+    <!-- Images -->
+    <div id="crystal-img">
+      <img class="crystal-blue" src="assets/images/blue.png" alt="blue" />
 
-    <img class="crystal-image" src="../images.png" alt="blue">
+      <img class="crystal-green" src="assets/images/green.png" alt="green" />
 
-  </div>
-<div id="crystals">
+      <img class="crystal-red" src="assets/images/red.png" alt="red" />
 
-    <img class="crystal-image" src="../images.png" alt="green">
-
-  </div>
-  <div id="crystals">
-
-    <img class="crystal-image" src="../images.png" alt="red">
-
-  </div>
-  <div id="crystals">
-
-    <img class="crystal-image" src="../images.png" alt="yellow">
-
-  </div>
-
-  <div class="container4">
-      <p>Your total is :</p>
+      <img class="crystal-yellow" src="assets/images/yellow.png" alt="yellow" />
     </div>
+    <!-- The total section -->
+    <div class="container4"><p>Your total is :</p></div>
 
-     <div class="container5">
-      <p id="total-number"></p>
-    </div>
-    
-    <script type="text/javascript"></script>
+    <div class="container5"><p id="total-number"></p></div>
 
+    <script type="text/javascript" src="assets/javascript/game.js/game.js">
+      // Array of crystals
+      // ========================================================
+      var crystals = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+  
+      // variables
+      // ===================================================================================================
+      var computerPick;
+      // This will break the solution into individual numbers to be stored in array.
+      var crystalsChosen ;
+      // This will be the number of total we show after clicking on crystals
+      var total ;
+      // Game counters
+      var wins = 0;
+      var losses = 0;
+     
+
+      // starting the game
+      $(document).ready(function() {
+
+      function startGame() {
+
+         total = 0;
+       
+         computerPick = computerChoice[Math.floor(Math.random() * 120)];
+
+         $("#number-to-guess").text(computerPick);
+
+         console.log(computerPick);
+      }
+
+
+       $("#crystal-img").on("click", function() {
+
+              for (var i = 0; i < crystals.length; i++) {
+                  var crystalValue = ($(this).attr("data-crystalvalue"));
+                      crystalValue = parseInt(crystalValue);
+                      total+=crystalValue;
+
+              if (total===computerPick){
+                  wins++;
+                  console.log("New score: " + computerPick + "total:" + total );
+                  startGame();
+              }
+              else if (total >= computerPick) {
+                  losses++;
+                  console.log("New score: " + computerPick + "total:" + total );
+                  startGame();
+                }
+
+              }
+          });
+      });
+    </script>
   </body>
 </html>
